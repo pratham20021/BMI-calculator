@@ -1,6 +1,0 @@
-com\bmi\config\WebConfig.class
-com\bmi\controller\BmiController.class
-com\bmi\model\BmiRequest.class
-com\bmi\model\BmiResponse.class
-com\bmi\BmiApplication.class
-com\bmi\service\BmiService.class

@@ -1,0 +1,22 @@
+# Maven
+target/
+*.class
+*.jar
+*.war
+
+# Angular
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+
+# Static resources (generated during build)
+src/main/resources/static/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
