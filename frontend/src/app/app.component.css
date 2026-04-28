@@ -1,0 +1,103 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 28px;
+  font-size: 1.8rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  color: #555;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 18px;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+button:hover:not(:disabled) { opacity: 0.9; }
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.error {
+  margin-top: 14px;
+  color: #842029;
+  background: #f8d7da;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.result {
+  margin-top: 24px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.bmi-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.category {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+.Underweight { background: #fff3cd; }
+.Underweight .category { color: #856404; }
+
+.Normal { background: #d1e7dd; }
+.Normal .category { color: #0f5132; }
+
+.Overweight { background: #ffe5d0; }
+.Overweight .category { color: #c45e00; }
+
+.Obese { background: #f8d7da; }
+.Obese .category { color: #842029; }
