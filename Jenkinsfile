@@ -2,11 +2,13 @@ pipeline {
     agent any
 
     environment {
-        ECR_REPO = '753668405724.dkr.ecr.ap-south-1.amazonaws.com/bmi-app'
-        AWS_REGION = 'ap-south-1'
-        EC2_USER = 'ec2-user'
-        EC2_HOST = credentials('ec2-host')
-        SSH_KEY  = credentials('ec2-ssh-key')
+        ECR_REPO           = '753668405724.dkr.ecr.ap-south-1.amazonaws.com/bmi-app'
+        AWS_REGION         = 'ap-south-1'
+        AWS_ACCESS_KEY_ID     = credentials('aws-access-key')
+        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key')
+        EC2_USER           = 'ec2-user'
+        EC2_HOST           = credentials('ec2-host')
+        SSH_KEY            = credentials('ec2-ssh-key')
     }
 
     stages {
@@ -44,7 +46,7 @@ pipeline {
 
     post {
         success {
-            echo "Deployment successful -> http://${env.EC2_HOST}:8080"
+            echo 'Deployment successful -> http://[EC2_HOST]:8080'
         }
         failure {
             echo 'Pipeline failed. Check stage logs above.'
