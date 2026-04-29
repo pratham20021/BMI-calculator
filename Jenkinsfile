@@ -2,12 +2,11 @@ pipeline {
     agent any
 
     environment {
-        AWS_REGION  = 'us-east-1'
-        AWS_ACCOUNT = credentials('aws-account-id')
-        ECR_REPO    = "${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com/bmi-app"
-        EC2_USER    = 'ec2-user'
-        EC2_HOST    = credentials('ec2-host')
-        SSH_KEY     = credentials('ec2-ssh-key')
+        ECR_REPO = '753668405724.dkr.ecr.ap-south-1.amazonaws.com/bmi-app'
+        AWS_REGION = 'ap-south-1'
+        EC2_USER = 'ec2-user'
+        EC2_HOST = credentials('ec2-host')
+        SSH_KEY  = credentials('ec2-ssh-key')
     }
 
     stages {
@@ -26,15 +25,11 @@ pipeline {
 
         stage('Push to ECR') {
             steps {
-                withAWS(region: "${AWS_REGION}", credentials: 'aws-credentials') {
-                    bat """
-                        aws ecr get-login-password --region %AWS_REGION% | docker login --username AWS --password-stdin %ECR_REPO%
-                        docker tag bmi-app:%BUILD_NUMBER% %ECR_REPO%:%BUILD_NUMBER%
-                        docker tag bmi-app:%BUILD_NUMBER% %ECR_REPO%:latest
-                        docker push %ECR_REPO%:%BUILD_NUMBER%
-                        docker push %ECR_REPO%:latest
-                    """
-                }
+                bat "aws ecr get-login-password --region %AWS_REGION% | docker login --username AWS --password-stdin %ECR_REPO%"
+                bat "docker tag bmi-app:%BUILD_NUMBER% %ECR_REPO%:%BUILD_NUMBER%"
+                bat "docker tag bmi-app:%BUILD_NUMBER% %ECR_REPO%:latest"
+                bat "docker push %ECR_REPO%:%BUILD_NUMBER%"
+                bat "docker push %ECR_REPO%:latest"
             }
         }
 
