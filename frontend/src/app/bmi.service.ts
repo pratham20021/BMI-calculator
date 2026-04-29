@@ -14,7 +14,7 @@ export interface BmiResponse {
 
 @Injectable({ providedIn: 'root' })
 export class BmiService {
-  private apiUrl = 'http://localhost:8080/api/calculate';
+  private apiUrl = '/api/calculate';
 
   constructor(private http: HttpClient) {}
 
